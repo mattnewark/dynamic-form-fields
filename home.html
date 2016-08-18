@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <!--added input-->
+      <div id="dynamicInput"></div>
+        <!-- Add New Field Button -->
+        <div class="center-align">
+          <a id="addFieldBtn" class="waves-effect waves-light btn-large modal-trigger" href="#AddField">Add Form Field</a>
+        </div>
+
+		<!-- Save form button -->
+		<div class="center-align">
+          <button id="saveForm" class="waves-effect waves-light btn-large" style="margin-top: 20px;">Save Form</button>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div id="AddField" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <form method="post">
+        <h4>Add A Form Field</h4>
+          <div class="input-field col s10">
+              <select id="type">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="text">Text Field</option>
+                <option value="textarea">Textarea</option>
+                <option value="password">Password</option>
+              </select>
+              <!-- Text Fields -->
+              <div id="text" class="optional text" style="display:none;">
+                <input id="fieldTextLabel" type="text" name="label" placeholder="Label">
+                <input id="fieldTextMaxLength" type="number" name="maxlength" placeholder="Max Length">
+                <!-- Hidden Form Field to Show Type -->
+                <input type="hidden" name="type" value="text">
+              </div>
+              <!-- Password Fields -->
+              <div id="text" class="optional password" style="display:none;">
+                <input id="fieldPasswordLabel" type="text" name="label" placeholder="Label">
+                <!-- Hidden Form Field to Show Type -->
+                <input type="hidden" name="type" value="password">
+              </div>
+              <!-- TextArea Fields -->
+              <div id="text" class="optional textarea" style="display:none;">
+                <input id="fieldTextAreaLabel" type="text" name="label" placeholder="Label">
+                <input id="fieldTextMaxLength" type="number" name="maxlength" placeholder="Max Length">
+                <input id="fieldTextAreaCols" type="number" name="cols" placeholder="Number of Columns">
+                <input id="fieldTextAreaRows" type="number" name="rows" placeholder="Number of Rows">
+                <!-- Hidden Form Field to Show Type -->
+                <input type="hidden" name="type" value="textarea">
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <span id="addInput" class="modal-action modal-close waves-effect waves-green btn">Add Form Field</span>
+      </div>
+    </form>
+  </div>
+    <!-- End Modal -->
+</div>
+
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>
