@@ -33,6 +33,7 @@ $('#addInput').click(function () {
 			myInputs[counter]['atts']['rows']	=	$('#fieldTextAreaRows').val();
 		break;
 	}
+
 	var newdiv = document.createElement('div');
 	switch (myInputs[counter]['type']) {
 		case 'text':
@@ -42,7 +43,6 @@ $('#addInput').click(function () {
 			"<br>Label: " + myInputs[counter]['atts']['label'] +
 			"<br>Name: " + myInputs[counter]['atts']['label'] +
 			"<br>Length: " + myInputs[counter]['atts']['maxlen'] +
-			document.getElementById('dynamicInput').appendChild(newdiv);
 			counter++;
 			break;
 			case 'password':
@@ -51,7 +51,6 @@ $('#addInput').click(function () {
 				"<br>Type: " + myInputs[counter]['type'] +
 				"<br>Label: " + myInputs[counter]['atts']['label'] +
 				"<br>Name: " + myInputs[counter]['atts']['label'] +
-				document.getElementById('dynamicInput').appendChild(newdiv);
 				counter++;
 				break;
 		case 'textarea':
@@ -61,10 +60,10 @@ $('#addInput').click(function () {
 			"<br>Label: " + myInputs[counter]['atts']['label'] +
 			"<br>Rols: " + myInputs[counter]['atts']['cols'] +
 			"<br>Rows: " + myInputs[counter]['atts']['rows'] +
-			document.getElementById('dynamicInput').appendChild(newdiv);
 			counter++;
 			break;
-	}
+			}
+			document.getElementById('dynamicInput').appendChild(newdiv)
 });
 
 // Input type 'Select' change
