@@ -4,7 +4,6 @@ var counter = 1;
 
 // Create new input array
 $('#addFieldBtn').click(function () {
-	$('select').material_select('destroy');
 	$('select').material_select();
 	myInputs[counter] = [];
 });
