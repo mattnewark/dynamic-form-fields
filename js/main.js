@@ -42,32 +42,36 @@ function addInput(divName) {
 			myInputs[counter]['atts']['rows']	=	document.getElementById('fieldTextAreaRows').value
 		break;
   }
-    var form = document.createElement('form');
-    form.setAttribute('id', 'myForm');
-    document.body.appendChild(form);
+    //var form = document.createElement('form');
+    //form.setAttribute('id', 'myForm');
+    //document.body.appendChild(form);
     var input = document.createElement('input');
+    var ta  = document.createElement('textarea');
     switch(myInputs[counter]['type']){
       case 'text':
       input.setAttribute('type', myInputs[counter]['type']);
       input.setAttribute('name', myInputs[counter]['atts']['label']);
       input.setAttribute('maxlength', myInputs[counter]['atts']['maxlength']);
-      input.setAttribute('placeholder', myInputs[counter]['atts']['label'])
+      input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
       counter++;
+      document.getElementById(divName).appendChild(input);
         break;
       case 'password':
 			input.setAttribute('type', myInputs[counter]['type']);
 			input.setAttribute('name', myInputs[counter]['atts']['label']);
 			input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
 			counter++;
+      document.getElementById(divName).appendChild(input);
 			   break;
   		case 'textarea':
-  		input.setAttribute('type', myInputs[counter]['type']);
-      input.setAttribute('cols', myInputs[counter]['atts']['cols']);
-      input.setAttribute('rows', myInputs[counter]['atts']['rows']);
+  		ta.setAttribute('type', myInputs[counter]['type']);
+      ta.setAttribute('cols', myInputs[counter]['atts']['cols']);
+      ta.setAttribute('rows', myInputs[counter]['atts']['rows']);
 			counter++;
+      document.getElementById(divName).appendChild(ta);
   			break;
     }
-    document.getElementById(divName).appendChild(input);
+
 };
 
 // Send the field data via POST to do something with...
