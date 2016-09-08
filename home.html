@@ -5,7 +5,7 @@
 <body>
    <div id="dynamicInput"></div>
 <input type="button" value="Add another text input" id="addFieldBtn" script="display:none;" onclick="showDiv();">
-<form method="post" name="form">
+<form method="post" name="form" id="form">
    <div id="AddField" class="option text" style="display:none;">
      <select id="type" onchange="showType(this);">
        <option value="" disabled selected>Choose your option</option>
@@ -35,7 +35,7 @@
       <input type="hidden" name="type" value="textarea">
     </div>
    </div>
-   <input type="button" value="Create Field" onclick="addInput('dynamicInput');">
+   <input type="button" value="Create Field" onclick="addInput('dynamicInput'), this.form.reset();">
 </form>
 
 <script type="text/javascript" src="js/main.js"></script>

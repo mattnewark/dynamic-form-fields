@@ -23,6 +23,7 @@ function showType(type) {
 };
 
 function addInput(divName) {
+
   switch(myInputs[counter]['type']){
 		case 'text':
 			myInputs[counter]['atts']	=	[];
@@ -41,43 +42,39 @@ function addInput(divName) {
 			myInputs[counter]['atts']['rows']	=	document.getElementById('fieldTextAreaRows').value
 		break;
   }
-    var newdiv = document.createElement('div');
+    var form = document.createElement('form');
+    form.setAttribute('id', 'myForm');
+    document.body.appendChild(form);
+    var input = document.createElement('input');
     switch(myInputs[counter]['type']){
       case 'text':
-      newdiv.innerHTML =
-        "Entry " + (counter) +
-        " Type: " + myInputs[counter]['type'] +
-        " Label: " + myInputs[counter]['atts']['label'] +
-        " Name: " + myInputs[counter]['atts']['label'] +
-        " Length: " + myInputs[counter]['atts']['maxlen'] +
-        counter++;
+      input.setAttribute('type', myInputs[counter]['type']);
+      input.setAttribute('name', myInputs[counter]['atts']['label']);
+      input.setAttribute('maxlength', myInputs[counter]['atts']['maxlength']);
+      input.setAttribute('placeholder', myInputs[counter]['atts']['label'])
+      counter++;
         break;
-        case 'password':
-  		newdiv.innerHTML =
-  				"Entry " + (counter) +
-  				"<br>Type: " + myInputs[counter]['type'] +
-  				"<br>Label: " + myInputs[counter]['atts']['label'] +
-  				"<br>Name: " + myInputs[counter]['atts']['label'] +
-  				counter++;
-  				break;
+      case 'password':
+			input.setAttribute('type', myInputs[counter]['type']);
+			input.setAttribute('name', myInputs[counter]['atts']['label']);
+			input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
+			counter++;
+			   break;
   		case 'textarea':
-  		newdiv.innerHTML =
-  			"Entry " + (counter) +
-  			"<br>Type: " + myInputs[counter]['type'] +
-  			"<br>Label: " + myInputs[counter]['atts']['label'] +
-  			"<br>Rols: " + myInputs[counter]['atts']['cols'] +
-  			"<br>Rows: " + myInputs[counter]['atts']['rows'] +
-  			counter++;
+  		input.setAttribute('type', myInputs[counter]['type']);
+      input.setAttribute('cols', myInputs[counter]['atts']['cols']);
+      input.setAttribute('rows', myInputs[counter]['atts']['rows']);
+			counter++;
   			break;
     }
-    document.getElementById(divName).appendChild(newdiv);
+    document.getElementById(divName).appendChild(input);
 };
 
 // Send the field data via POST to do something with...
-$('#saveForm').click(function () {
-	  var rv = {};
-	  for (var i = 0; i < myInputs.length; ++i)
-		rv[i] = myInputs[i];
-	console.log(rv);
+//$('#saveForm').click(function () {
+//	  var rv = {};
+//	  for (var i = 0; i < myInputs.length; ++i)
+//		rv[i] = myInputs[i];
+//	console.log(rv);
 	//$.post('save.php', rv);
-})
+//})
