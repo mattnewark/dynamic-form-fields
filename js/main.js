@@ -2,7 +2,7 @@ var myInputs = new Array();
 var counter = 0;
 
 function showDiv() {
-  document.getElementById('AddField').style.display = 'block';
+  document.getElementById('form').style.display = 'block';
   myInputs[counter] = [];
 };
 
@@ -71,8 +71,12 @@ function addInput(divName) {
       document.getElementById(divName).appendChild(ta);
   			break;
     }
-
 };
+
+function frmreset() {
+  var div = document.getElementById('form');
+  div.style.display = 'none';
+}
 
 // Send the field data via POST to do something with...
 //$('#saveForm').click(function () {
