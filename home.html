@@ -12,27 +12,28 @@
        <option value="text">Text Field</option>
        <option value="textarea">Textarea</option>
        <option value="password">Password</option>
+       <option value="dropdown">Dropdown</option>
     </select>
   <!-- Text Fields -->
-    <div id="text" class="optional text" style="display:none;">
+    <div id="text" class="text" style="display:none;">
       <input id="fieldTextLabel" type="text" name="label" placeholder="Label"><br>
       <input id="fieldTextMaxLength" type="number" name="maxlength" placeholder="Max Length">
-      <!-- Hidden Form Field to Show Type -->
-      <input type="hidden" name="type" value="text">
     </div>
     <div id="password" class="optional password" style="display:none;">
       <input id="fieldPasswordLabel" type="text" name="label" placeholder="Label">
-      <!-- Hidden Form Field to Show Type -->
-      <input type="hidden" name="type" value="password">
     </div>
     <!-- TextArea Fields -->
-    <div id="textarea" class="optional textarea" style="display:none;">
+    <div id="textarea" class="textarea" style="display:none;">
       <input id="fieldTextAreaLabel" type="text" name="label" placeholder="Label">
       <input id="fieldTextAreaMaxLength" type="number" name="maxlength" placeholder="Max Length">
       <input id="fieldTextAreaCols" type="number" name="cols" placeholder="Number of Columns">
       <input id="fieldTextAreaRows" type="number" name="rows" placeholder="Number of Rows">
-      <!-- Hidden Form Field to Show Type -->
-      <input type="hidden" name="type" value="textarea">
+    </div>
+    <div id="dropdown" class="dropdown" style="display:none;">
+      <input id="fieldDropDownLabel" type="text" name="label" placeholder="Label">
+      <input id="fieldDropDownone" type="text" name="one" placeholder="Option 1">
+      <input id="fieldDropDowntwo" type="text" name="two" placeholder="Option 2">
+      <input id="fieldDropDownthree" type="text" name="three" placeholder="Option 3">
     </div>
    </div>
    <input type="button" value="Create Field" onclick="addInput('dynamicInput'), frmreset()">

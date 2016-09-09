@@ -20,6 +20,10 @@ function showType(type) {
     document.getElementById('textarea').style.display = 'block';
     myInputs[counter]['type']	=	'textarea';
   }
+  else if (t == 'dropdown') {
+    document.getElementById('dropdown').style.display = 'block';
+    myInputs[counter]['type']	=	'dropdown';
+  }
 };
 
 function addInput(divName) {
@@ -41,14 +45,20 @@ function addInput(divName) {
 			myInputs[counter]['atts']['cols']	=	document.getElementById('fieldTextAreaCols').value
 			myInputs[counter]['atts']['rows']	=	document.getElementById('fieldTextAreaRows').value
 		break;
+    case 'dropdown':
+      myInputs[counter]['atts'] = [];
+      myInputs[counter]['atts']['label']	=	document.getElementById('fieldDropDownLabel').value
+      myInputs[counter]['atts']['one']	=	document.getElementById('fieldDropDownone').value
+      myInputs[counter]['atts']['two']	=	document.getElementById('fieldDropDowntwo').value
+      myInputs[counter]['atts']['three']	=	document.getElementById('fieldDropDownthree').value
+      break;
   }
-    //var form = document.createElement('form');
-    //form.setAttribute('id', 'myForm');
-    //document.body.appendChild(form);
     var input = document.createElement('input');
     var ta  = document.createElement('textarea');
+    var dd = document.createElement('select');
     switch(myInputs[counter]['type']){
       case 'text':
+      input.setAttribute('id', myInputs[counter]['atts']['label'])
       input.setAttribute('type', myInputs[counter]['type']);
       input.setAttribute('name', myInputs[counter]['atts']['label']);
       input.setAttribute('maxlength', myInputs[counter]['atts']['maxlength']);
@@ -70,6 +80,19 @@ function addInput(divName) {
 			counter++;
       document.getElementById(divName).appendChild(ta);
   			break;
+      case 'dropdown':
+      var option1 = document.createElement('option');
+      option1.text = myInputs[counter]['atts']['one'];
+      dd.add(option1, dd.options[null]);
+      var option2 = document.createElement('option');
+      option2.text = myInputs[counter]['atts']['two'];
+      dd.add(option2, dd.options[null]);
+      var option3 = document.createElement('option');
+      option3.text = myInputs[counter]['atts']['three'];
+      dd.add(option3, dd.options[null]);
+      counter++;
+      document.getElementById(divName).appendChild(dd);
+        break;
     }
 };
 
@@ -80,6 +103,7 @@ function frmreset() {
 	document.getElementById('text').style.display = 'none';
 	document.getElementById('password').style.display = 'none';
 	document.getElementById('textarea').style.display = 'none';
+  document.getElementById('dropdown').style.display = 'none';
 	document.getElementById('fieldTextLabel').value = '';
 	document.getElementById('fieldTextMaxLength').value = '';
 	document.getElementById('fieldPasswordLabel').value = '';
@@ -87,6 +111,10 @@ function frmreset() {
 	document.getElementById('fieldTextAreaMaxLength').value = '';
 	document.getElementById('fieldTextAreaCols').value = '';
 	document.getElementById('fieldTextAreaRows').value = '';
+  document.getElementById('fieldDropDownLabel').value = '';
+  document.getElementById('fieldDropDownone').value='';
+  document.getElementById('fieldDropDowntwo').value='';
+  document.getElementById('fieldDropDownthree').value='';
 }
 
 // Send the field data via POST to do something with...
