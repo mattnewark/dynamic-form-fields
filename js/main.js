@@ -76,6 +76,17 @@ function addInput(divName) {
 function frmreset() {
   var div = document.getElementById('form');
   div.style.display = 'none';
+  document.getElementById('type').value = '';
+	document.getElementById('text').style.display = 'none';
+	document.getElementById('password').style.display = 'none';
+	document.getElementById('textarea').style.display = 'none';
+	document.getElementById('fieldTextLabel').value = '';
+	document.getElementById('fieldTextMaxLength').value = '';
+	document.getElementById('fieldPasswordLabel').value = '';
+	document.getElementById('fieldTextAreaLabel').value = '';
+	document.getElementById('fieldTextAreaMaxLength').value = '';
+	document.getElementById('fieldTextAreaCols').value = '';
+	document.getElementById('fieldTextAreaRows').value = '';
 }
 
 // Send the field data via POST to do something with...
