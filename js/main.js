@@ -85,11 +85,19 @@ function addInput(divName) {
       option1.text = myInputs[counter]['atts']['one'];
       dd.add(option1, dd.options[null]);
       var option2 = document.createElement('option');
+      if (option2.value.length == 0) {
+        option2.value = '';
+      } else {
       option2.text = myInputs[counter]['atts']['two'];
       dd.add(option2, dd.options[null]);
+      }
       var option3 = document.createElement('option');
-      option3.text = myInputs[counter]['atts']['three'];
-      dd.add(option3, dd.options[null]);
+      if (option3.value.length == 0) {
+        option3.vlaue = '';
+      } else {
+        option3.text = myInputs[counter]['atts']['three'];
+        dd.add(option3, dd.options[null]);
+      }
       counter++;
       document.getElementById(divName).appendChild(dd);
         break;
