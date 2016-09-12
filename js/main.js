@@ -1,11 +1,16 @@
+//Created by Matthew Morris
+
 var myInputs = new Array();
 var counter = 0;
 
+//show the select box
 function showDiv() {
   document.getElementById('form').style.display = 'block';
+  //initite the myInputs array
   myInputs[counter] = [];
 };
 
+//Display the form selection from the select box
 function showType(type) {
   var t = type.value;
   if (t == 'text') {
@@ -27,7 +32,7 @@ function showType(type) {
 };
 
 function addInput(divName) {
-
+  //assign values to the myInputs Array
   switch(myInputs[counter]['type']){
 		case 'text':
 			myInputs[counter]['atts']	=	[];
@@ -51,12 +56,16 @@ function addInput(divName) {
       myInputs[counter]['atts']['one']	=	document.getElementById('fieldDropDownone').value
       myInputs[counter]['atts']['two']	=	document.getElementById('fieldDropDowntwo').value
       myInputs[counter]['atts']['three']	=	document.getElementById('fieldDropDownthree').value
+      myInputs[counter]['atts']['four']	=	document.getElementById('fieldDropDownfour').value
+      myInputs[counter]['atts']['five']	=	document.getElementById('fieldDropDownfive').value
+      myInputs[counter]['atts']['six']	=	document.getElementById('fieldDropDownsix').value
       break;
   }
     var input = document.createElement('input');
     var ta  = document.createElement('textarea');
     var dd = document.createElement('select');
     switch(myInputs[counter]['type']){
+      //add attributes to the text field
       case 'text':
       input.setAttribute('id', myInputs[counter]['atts']['label'])
       input.setAttribute('type', myInputs[counter]['type']);
@@ -66,6 +75,7 @@ function addInput(divName) {
       counter++;
       document.getElementById(divName).appendChild(input);
         break;
+        //add attributes to the password field
       case 'password':
 			input.setAttribute('type', myInputs[counter]['type']);
 			input.setAttribute('name', myInputs[counter]['atts']['label']);
@@ -73,6 +83,7 @@ function addInput(divName) {
 			counter++;
       document.getElementById(divName).appendChild(input);
 			   break;
+         //add the attributes to the textarea field
   		case 'textarea':
   		ta.setAttribute('type', myInputs[counter]['type']);
       ta.setAttribute('cols', myInputs[counter]['atts']['cols']);
@@ -80,23 +91,60 @@ function addInput(divName) {
 			counter++;
       document.getElementById(divName).appendChild(ta);
   			break;
+        //add attributes to the dropdown field
       case 'dropdown':
+      //default Option
+      var option = document.createElement('option');
+      option.text = 'Please Select';
+      dd.add(option, dd.options[null]);
+      //option 1
       var option1 = document.createElement('option');
-      option1.text = myInputs[counter]['atts']['one'];
-      dd.add(option1, dd.options[null]);
+      if (option1.value.length == 0) {
+        option1.value = '';
+      } else {
+        option1.text = myInputs[counter]['atts']['one'];
+        dd.add(option1, dd.options[null]);
+      }
+
+      //option two
       var option2 = document.createElement('option');
       if (option2.value.length == 0) {
         option2.value = '';
       } else {
-      option2.text = myInputs[counter]['atts']['two'];
-      dd.add(option2, dd.options[null]);
+        option2.text = myInputs[counter]['atts']['two'];
+        dd.add(option2, dd.options[null]);
       }
+      //option three
       var option3 = document.createElement('option');
       if (option3.value.length == 0) {
-        option3.vlaue = '';
+        option3.value = '';
       } else {
         option3.text = myInputs[counter]['atts']['three'];
         dd.add(option3, dd.options[null]);
+      }
+      //option four
+      var option4 = document.createElement('option');
+      if (option4.value.length == 0) {
+        option4.value = '';
+      } else {
+        option4.text = myInputs[counter]['atts']['four'];
+        dd.add(option4, dd.options[null]);
+      }
+      //option five
+      var option5 = document.createElement('option');
+      if (option5.value.length == 0) {
+        option5.value = '';
+      } else {
+        option5.text = myInputs[counter]['atts']['five'];
+        dd.add(option5, dd.options[null]);
+      }
+      //option six
+      var option6 = document.createElement('option');
+      if (option6.value.length == 0) {
+        option6.value = '';
+      } else {
+        option6.text = myInputs[counter]['atts']['six'];
+        dd.add(option6, dd.options[null]);
       }
       counter++;
       document.getElementById(divName).appendChild(dd);
@@ -104,6 +152,7 @@ function addInput(divName) {
     }
 };
 
+//reset form select dropdown
 function frmreset() {
   var div = document.getElementById('form');
   div.style.display = 'none';
@@ -123,6 +172,9 @@ function frmreset() {
   document.getElementById('fieldDropDownone').value='';
   document.getElementById('fieldDropDowntwo').value='';
   document.getElementById('fieldDropDownthree').value='';
+  document.getElementById('fieldDropDownfour').value='';
+  document.getElementById('fieldDropDownfive').value='';
+  document.getElementById('fieldDropDownsix').value='';
 }
 
 // Send the field data via POST to do something with...
