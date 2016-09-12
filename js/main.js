@@ -61,7 +61,7 @@ function addInput(divName) {
       input.setAttribute('id', myInputs[counter]['atts']['label'])
       input.setAttribute('type', myInputs[counter]['type']);
       input.setAttribute('name', myInputs[counter]['atts']['label']);
-      input.setAttribute('maxlength', myInputs[counter]['atts']['maxlength']);
+      input.setAttribute('maxlength', myInputs[counter]['atts']['maxlen']);
       input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
       counter++;
       document.getElementById(divName).appendChild(input);
