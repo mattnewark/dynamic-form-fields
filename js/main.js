@@ -88,6 +88,9 @@ function addInput(divName) {
         break;
         //add attributes to the password field
       case 'password':
+      label.textContent = myInputs[counter]['atts']['label'];
+      label.setAttribute('for', myInputs[counter]['atts']['label']);
+      f.appendChild(label);
 			input.setAttribute('type', myInputs[counter]['type']);
 			input.setAttribute('name', myInputs[counter]['atts']['label']);
 			input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
