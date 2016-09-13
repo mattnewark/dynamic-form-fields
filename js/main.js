@@ -96,7 +96,7 @@ function addInput(divName) {
 			input.setAttribute('name', myInputs[counter]['atts']['label']);
 			input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
 			counter++;
-      document.getElementById(divName).appendChild(input);
+      f.appendChild(input);
 			   break;
          //add the attributes to the textarea field
   		case 'textarea':
@@ -105,7 +105,7 @@ function addInput(divName) {
       ta.setAttribute('cols', myInputs[counter]['atts']['cols']);
       ta.setAttribute('rows', myInputs[counter]['atts']['rows']);
 			counter++;
-      document.getElementById(divName).appendChild(ta);
+      f.appendChild(ta);
   			break;
         //add attributes to the dropdown field
       case 'dropdown':
@@ -159,7 +159,7 @@ function addInput(divName) {
         dd.add(option6, dd.options[null]);
       }
       counter++;
-      document.getElementById(divName).appendChild(dd);
+      f.appendChild(dd);
         break;
     }
 };
