@@ -1,5 +1,9 @@
 //Created by Matthew Morris
 
+var f = document.createElement('form');
+f.setAttribute('method', "post");
+f.setAttribute('id', "myForm");
+document.getElementById('dynamicInput').appendChild(f);
 var myInputs = new Array();
 var counter = 0;
 
@@ -61,19 +65,26 @@ function addInput(divName) {
       myInputs[counter]['atts']['six']	=	document.getElementById('fieldDropDownsix').value
       break;
   }
+    var linbreak = document.createElement('br');
     var input = document.createElement('input');
     var ta  = document.createElement('textarea');
     var dd = document.createElement('select');
+    var label = myInputs[counter]['atts']['label'];
     switch(myInputs[counter]['type']){
       //add attributes to the text field
       case 'text':
-      input.setAttribute('id', myInputs[counter]['atts']['label'])
+      var label = document.createElement('label');
+      label.textContent = myInputs[counter]['atts']['label'];
+      label.setAttribute('for', myInputs[counter]['atts']['label']);
+      f.appendChild(label);
+      input.setAttribute('id',myInputs[counter]['atts']['label'])
       input.setAttribute('type', myInputs[counter]['type']);
       input.setAttribute('name', myInputs[counter]['atts']['label']);
       input.setAttribute('maxlength', myInputs[counter]['atts']['maxlen']);
       input.setAttribute('placeholder', myInputs[counter]['atts']['label']);
       counter++;
-      document.getElementById(divName).appendChild(input);
+      f.appendChild(input);
+      //input.appendChild(linebreak);
         break;
         //add attributes to the password field
       case 'password':
@@ -86,6 +97,7 @@ function addInput(divName) {
          //add the attributes to the textarea field
   		case 'textarea':
   		ta.setAttribute('type', myInputs[counter]['type']);
+      ta.setAttribute('maxlength', myInputs[counter]['atts']['maxlen']);
       ta.setAttribute('cols', myInputs[counter]['atts']['cols']);
       ta.setAttribute('rows', myInputs[counter]['atts']['rows']);
 			counter++;
@@ -93,19 +105,14 @@ function addInput(divName) {
   			break;
         //add attributes to the dropdown field
       case 'dropdown':
-      //default Option
+      //default option
       var option = document.createElement('option');
       option.text = 'Please Select';
       dd.add(option, dd.options[null]);
       //option 1
       var option1 = document.createElement('option');
-      if (option1.value.length == 0) {
-        option1.value = '';
-      } else {
         option1.text = myInputs[counter]['atts']['one'];
         dd.add(option1, dd.options[null]);
-      }
-
       //option two
       var option2 = document.createElement('option');
       if (option2.value.length == 0) {
@@ -138,6 +145,7 @@ function addInput(divName) {
         option5.text = myInputs[counter]['atts']['five'];
         dd.add(option5, dd.options[null]);
       }
+
       //option six
       var option6 = document.createElement('option');
       if (option6.value.length == 0) {
