@@ -69,7 +69,7 @@ function addInput(divName) {
     var input = document.createElement('input');
     var ta  = document.createElement('textarea');
     var dd = document.createElement('select');
-    var label = myInputs[counter]['atts']['label'];
+    //var label = myInputs[counter]['atts']['label'];
     switch(myInputs[counter]['type']){
       //add attributes to the text field
       case 'text':
@@ -109,53 +109,62 @@ function addInput(divName) {
   			break;
         //add attributes to the dropdown field
       case 'dropdown':
+      dd.setAttribute('name', myInputs[counter]['atts']['label'])
       //default option
       var option = document.createElement('option');
       option.text = 'Please Select';
+      option.value = '';
       dd.add(option, dd.options[null]);
       //option 1
       var option1 = document.createElement('option');
         option1.text = myInputs[counter]['atts']['one'];
+        option1.value = myInputs[counter]['atts']['one'];
         dd.add(option1, dd.options[null]);
       //option two
       var option2 = document.createElement('option');
-      if (option2.value.length == 0) {
+      if (document.getElementById('fieldDropDowntwo').value.length == 0) {
         option2.value = '';
+        option2.text = '';
       } else {
         option2.text = myInputs[counter]['atts']['two'];
+        option2.value = myInputs[counter]['atts']['two'];
         dd.add(option2, dd.options[null]);
       }
       //option three
       var option3 = document.createElement('option');
-      if (option3.value.length == 0) {
+      if (document.getElementById('fieldDropDownthree').value.length == 0) {
         option3.value = '';
       } else {
         option3.text = myInputs[counter]['atts']['three'];
+        option3.value = myInputs[counter]['atts']['three'];
         dd.add(option3, dd.options[null]);
       }
       //option four
       var option4 = document.createElement('option');
-      if (option4.value.length == 0) {
+      if (document.getElementById('fieldDropDownfour').value.length == 0) {
         option4.value = '';
       } else {
         option4.text = myInputs[counter]['atts']['four'];
+        option4.value = myInputs[counter]['atts']['four'];
         dd.add(option4, dd.options[null]);
       }
       //option five
       var option5 = document.createElement('option');
-      if (option5.value.length == 0) {
+      if (document.getElementById('fieldDropDownfive').value.length == 0) {
         option5.value = '';
       } else {
         option5.text = myInputs[counter]['atts']['five'];
+        option5.value = myInputs[counter]['atts']['five'];
         dd.add(option5, dd.options[null]);
       }
 
       //option six
       var option6 = document.createElement('option');
-      if (option6.value.length == 0) {
+      if (document.getElementById('fieldDropDownsix').value.length == 0) {
         option6.value = '';
       } else {
         option6.text = myInputs[counter]['atts']['six'];
+        option6.value = myInputs[counter]['atts']['six'];
         dd.add(option6, dd.options[null]);
       }
       counter++;
