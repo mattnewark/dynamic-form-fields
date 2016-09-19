@@ -37,9 +37,9 @@ function showType(type) {
     document.getElementById('radio').style.display = 'block';
     myInputs[counter]['type']	=	'radio';
   }
-  else if (t == 'selectbox') {
-    document.getElementById('selectbox').style.display = 'block';
-    myInputs[counter]['type']	=	'selectbox';
+  else if (t == 'checkbox') {
+    document.getElementById('checkbox').style.display = 'block';
+    myInputs[counter]['type']	=	'checkbox';
   }
 };
 
@@ -77,7 +77,10 @@ function addInput(divName) {
       myInputs[counter]['atts']['label']	=	document.getElementById('fieldRadioLabel').value
       myInputs[counter]['atts']['one']	=	document.getElementById('fieldRadioone').value
       break;
-      case 'selectbox':
+      case 'checkbox':
+      myInputs[counter]['atts'] = [];
+      myInputs[counter]['atts']['label']	=	document.getElementById('fieldCheckLabel').value
+      myInputs[counter]['atts']['one']	=	document.getElementById('fieldCheckone').value
       break;
   }
 
@@ -198,7 +201,14 @@ function addInput(divName) {
         f.appendChild(input);
         break;
         //add attributes to the selectbox field
-        case 'selectbox':
+        case 'checkbox':
+        var label = document.createElement('label');
+        label.textContent = myInputs[counter]['atts']['label'];
+        label.setAttribute('for', myInputs[counter]['atts']['label']);
+        f.appendChild(label);
+        input.setAttribute('type', myInputs[counter]['type']);
+        input.setAttribute('name', myInputs[counter]['atts']['label'])
+        input.setAttribute('value', myInputs[counter]['atts']['one'])
         counter++;
         break;
     }
@@ -214,7 +224,7 @@ function frmreset() {
 	document.getElementById('textarea').style.display = 'none';
   document.getElementById('dropdown').style.display = 'none';
   document.getElementById('radio').style.display = 'none';
-  document.getElementById('selectbox').style.display = 'none';
+  document.getElementById('checkbox').style.display = 'none';
 	document.getElementById('fieldTextLabel').value = '';
 	document.getElementById('fieldTextMaxLength').value = '';
 	document.getElementById('fieldPasswordLabel').value = '';
@@ -231,4 +241,6 @@ function frmreset() {
   document.getElementById('fieldDropDownsix').value='';
   document.getElementById('fieldRadioLabel').value='';
   document.getElementById('fieldRadioone').value='';
+  document.getElementById('fieldCheckLabel').value='';
+  document.getElementById('fieldCheckone').value='';
 };
