@@ -210,6 +210,7 @@ function addInput(divName) {
         input.setAttribute('name', myInputs[counter]['atts']['label'])
         input.setAttribute('value', myInputs[counter]['atts']['one'])
         counter++;
+        f.appendChild(input);
         break;
     }
 };
