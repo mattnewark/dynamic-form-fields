@@ -33,6 +33,14 @@ function showType(type) {
     document.getElementById('dropdown').style.display = 'block';
     myInputs[counter]['type']	=	'dropdown';
   }
+  else if (t == 'radio') {
+    document.getElementById('radio').style.display = 'block';
+    myInputs[counter]['type']	=	'radio';
+  }
+  else if (t == 'selectbox') {
+    document.getElementById('selectbox').style.display = 'block';
+    myInputs[counter]['type']	=	'selectbox';
+  }
 };
 
 function addInput(divName) {
@@ -64,8 +72,15 @@ function addInput(divName) {
       myInputs[counter]['atts']['five']	=	document.getElementById('fieldDropDownfive').value
       myInputs[counter]['atts']['six']	=	document.getElementById('fieldDropDownsix').value
       break;
+      case 'radio':
+      myInputs[counter]['atts'] = [];
+      myInputs[counter]['atts']['label']	=	document.getElementById('fieldRadioLabel').value
+      myInputs[counter]['atts']['one']	=	document.getElementById('fieldRadioone').value
+      break;
+      case 'selectbox':
+      break;
   }
-    var linbreak = document.createElement('br');
+
     var input = document.createElement('input');
     var ta  = document.createElement('textarea');
     var dd = document.createElement('select');
@@ -170,6 +185,22 @@ function addInput(divName) {
       counter++;
       f.appendChild(dd);
         break;
+        //add attributes to the radio field
+        case 'radio':
+        var label = document.createElement('label');
+        label.textContent = myInputs[counter]['atts']['label'];
+        label.setAttribute('for', myInputs[counter]['atts']['label']);
+        f.appendChild(label);
+        input.setAttribute('type', myInputs[counter]['type']);
+        input.setAttribute('name', myInputs[counter]['atts']['label'])
+        input.setAttribute('value', myInputs[counter]['atts']['one'])
+        counter++;
+        f.appendChild(input);
+        break;
+        //add attributes to the selectbox field
+        case 'selectbox':
+        counter++;
+        break;
     }
 };
 
@@ -182,6 +213,8 @@ function frmreset() {
 	document.getElementById('password').style.display = 'none';
 	document.getElementById('textarea').style.display = 'none';
   document.getElementById('dropdown').style.display = 'none';
+  document.getElementById('radio').style.display = 'none';
+  document.getElementById('selectbox').style.display = 'none';
 	document.getElementById('fieldTextLabel').value = '';
 	document.getElementById('fieldTextMaxLength').value = '';
 	document.getElementById('fieldPasswordLabel').value = '';
@@ -196,13 +229,6 @@ function frmreset() {
   document.getElementById('fieldDropDownfour').value='';
   document.getElementById('fieldDropDownfive').value='';
   document.getElementById('fieldDropDownsix').value='';
-}
-
-// Send the field data via POST to do something with...
-//$('#saveForm').click(function () {
-//	  var rv = {};
-//	  for (var i = 0; i < myInputs.length; ++i)
-//		rv[i] = myInputs[i];
-//	console.log(rv);
-	//$.post('save.php', rv);
-//})
+  document.getElementById('fieldRadioLabel').value='';
+  document.getElementById('fieldRadioone').value='';
+};
