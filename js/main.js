@@ -118,6 +118,10 @@ function addInput(divName) {
 			   break;
          //add the attributes to the textarea field
   		case 'textarea':
+      var label = document.createElement('label');
+      label.textContent = myInputs[counter]['atts']['label'];
+      label.setAttribute('for', myInputs[counter]['atts']['label']);
+      f.appendChild(label);
   		ta.setAttribute('type', myInputs[counter]['type']);
       ta.setAttribute('maxlength', myInputs[counter]['atts']['maxlen']);
       ta.setAttribute('cols', myInputs[counter]['atts']['cols']);
@@ -127,6 +131,10 @@ function addInput(divName) {
   			break;
         //add attributes to the dropdown field
       case 'dropdown':
+      var label = document.createElement('label');
+      label.textContent = myInputs[counter]['atts']['label'];
+      label.setAttribute('for', myInputs[counter]['atts']['label']);
+      f.appendChild(label);
       dd.setAttribute('name', myInputs[counter]['atts']['label'])
       //default option
       var option = document.createElement('option');
