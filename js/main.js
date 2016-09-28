@@ -43,6 +43,14 @@ function showType(type) {
   }
 };
 
+function addField() {
+  var input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('name', "newDrop");
+  input.setAttribute('id', 'newDrop');
+  document.getElementById('dropdown').appendChild(input);
+};
+
 function addInput(divName) {
   //assign values to the myInputs Array
   switch(myInputs[counter]['type']){
@@ -67,10 +75,7 @@ function addInput(divName) {
       myInputs[counter]['atts']['label']	=	document.getElementById('fieldDropDownLabel').value
       myInputs[counter]['atts']['one']	=	document.getElementById('fieldDropDownone').value
       myInputs[counter]['atts']['two']	=	document.getElementById('fieldDropDowntwo').value
-      myInputs[counter]['atts']['three']	=	document.getElementById('fieldDropDownthree').value
-      myInputs[counter]['atts']['four']	=	document.getElementById('fieldDropDownfour').value
-      myInputs[counter]['atts']['five']	=	document.getElementById('fieldDropDownfive').value
-      myInputs[counter]['atts']['six']	=	document.getElementById('fieldDropDownsix').value
+      myInputs[counter]['atts']['newDrop']	=	document.getElementById('newDrop').value
       break;
       case 'radio':
       myInputs[counter]['atts'] = [];
@@ -134,6 +139,7 @@ function addInput(divName) {
       var label = document.createElement('label');
       label.textContent = myInputs[counter]['atts']['label'];
       label.setAttribute('for', myInputs[counter]['atts']['label']);
+      label.setAttribute('id', 'dropdown');
       f.appendChild(label);
       dd.setAttribute('name', myInputs[counter]['atts']['label'])
       //default option
@@ -156,42 +162,14 @@ function addInput(divName) {
         option2.value = myInputs[counter]['atts']['two'];
         dd.add(option2, dd.options[null]);
       }
-      //option three
-      var option3 = document.createElement('option');
-      if (document.getElementById('fieldDropDownthree').value.length == 0) {
-        option3.value = '';
+      var newDrop = document.createElement('option');
+      if (document.getElementById('newDrop').value.length == 0) {
+        newDrop.value = '';
+        newDrop.text = '';
       } else {
-        option3.text = myInputs[counter]['atts']['three'];
-        option3.value = myInputs[counter]['atts']['three'];
-        dd.add(option3, dd.options[null]);
-      }
-      //option four
-      var option4 = document.createElement('option');
-      if (document.getElementById('fieldDropDownfour').value.length == 0) {
-        option4.value = '';
-      } else {
-        option4.text = myInputs[counter]['atts']['four'];
-        option4.value = myInputs[counter]['atts']['four'];
-        dd.add(option4, dd.options[null]);
-      }
-      //option five
-      var option5 = document.createElement('option');
-      if (document.getElementById('fieldDropDownfive').value.length == 0) {
-        option5.value = '';
-      } else {
-        option5.text = myInputs[counter]['atts']['five'];
-        option5.value = myInputs[counter]['atts']['five'];
-        dd.add(option5, dd.options[null]);
-      }
-
-      //option six
-      var option6 = document.createElement('option');
-      if (document.getElementById('fieldDropDownsix').value.length == 0) {
-        option6.value = '';
-      } else {
-        option6.text = myInputs[counter]['atts']['six'];
-        option6.value = myInputs[counter]['atts']['six'];
-        dd.add(option6, dd.options[null]);
+        newDrop.text = myInputs[counter]['atts']['newDrop'];
+        newDrop.value = myInputs[counter]['atts']['newDrop'];
+        dd.add(newDrop, dd.options[null]);
       }
       counter++;
       f.appendChild(dd);
@@ -223,6 +201,7 @@ function addInput(divName) {
     }
 };
 
+
 //reset form select dropdown
 function frmreset() {
   var div = document.getElementById('form');
@@ -244,10 +223,6 @@ function frmreset() {
   document.getElementById('fieldDropDownLabel').value = '';
   document.getElementById('fieldDropDownone').value='';
   document.getElementById('fieldDropDowntwo').value='';
-  document.getElementById('fieldDropDownthree').value='';
-  document.getElementById('fieldDropDownfour').value='';
-  document.getElementById('fieldDropDownfive').value='';
-  document.getElementById('fieldDropDownsix').value='';
   document.getElementById('fieldRadioLabel').value='';
   document.getElementById('fieldRadioone').value='';
   document.getElementById('fieldCheckLabel').value='';
