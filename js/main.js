@@ -75,7 +75,6 @@ function addInput(divName) {
       myInputs[counter]['atts']['label']	=	document.getElementById('fieldDropDownLabel').value
       myInputs[counter]['atts']['one']	=	document.getElementById('fieldDropDownone').value
       myInputs[counter]['atts']['two']	=	document.getElementById('fieldDropDowntwo').value
-      myInputs[counter]['atts']['newDrop']	=	document.getElementById('newDrop').value
       break;
       case 'radio':
       myInputs[counter]['atts'] = [];
@@ -162,15 +161,15 @@ function addInput(divName) {
         option2.value = myInputs[counter]['atts']['two'];
         dd.add(option2, dd.options[null]);
       }
-      var newDrop = document.createElement('option');
-      if (document.getElementById('newDrop').value.length == 0) {
-        newDrop.value = '';
-        newDrop.text = '';
-      } else {
-        newDrop.text = myInputs[counter]['atts']['newDrop'];
-        newDrop.value = myInputs[counter]['atts']['newDrop'];
-        dd.add(newDrop, dd.options[null]);
-      }
+      //var newDrop = document.createElement('option');
+      //if (document.getElementById('newDrop').value.length == 0) {
+      //  newDrop.value = '';
+      //  newDrop.text = '';
+      //} else {
+      //  newDrop.text = newDrop[];
+      //  newDrop.value = newDrop[];
+      //  dd.add(newDrop, dd.options[null]);
+      //}
       counter++;
       f.appendChild(dd);
         break;
